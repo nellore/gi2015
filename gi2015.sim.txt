@@ -1,0 +1,104 @@
+sim 1, true junctions, hisat2
+
+junction accuracy
+precision: 0.94452059
+recall: 0.98809727
+fscore: 0.96581765
+
+
+overlap accuracy
+precision: 0.98446203
+recall: 0.93710026
+fscore: 0.96019747
+
+sim 1, annotated junctions, hisat2
+
+junction accuracy
+precision: 0.79924780
+recall: 0.94529309
+fscore: 0.86615731
+
+
+overlap accuracy
+precision: 0.97156146
+recall: 0.92221687
+fscore: 0.94624630
+
+sim 1, true junctions, star
+
+junction accuracy
+precision: 0.97632316
+recall: 0.99338466
+fscore: 0.98478002
+
+
+overlap accuracy
+precision: 0.99516780
+recall: 0.90711300
+fscore: 0.94910241
+
+sim 1, annotated junctions, star
+
+junction accuracy
+precision: 0.90134768
+recall: 0.96662186
+fscore: 0.93284430
+
+
+overlap accuracy
+precision: 0.97904541
+recall: 0.87108562
+fscore: 0.92191565
+
+sim 2, true junctions, hisat2
+
+junction accuracy
+precision: 0.88218800
+recall: 0.96742218
+fscore: 0.92284120
+
+
+overlap accuracy
+precision: 0.97289624
+recall: 0.79607713
+fscore: 0.87564964
+
+sim 2, annotated junctions, hisat2
+
+junction accuracy
+precision: 0.75156390
+recall: 0.90801175
+fscore: 0.82241367
+
+
+overlap accuracy
+precision: 0.95826495
+recall: 0.77813234
+fscore: 0.85885523
+
+sim 2, true junctions, star
+
+junction accuracy
+precision: 0.91600716
+recall: 0.98528900
+fscore: 0.94938579
+
+
+overlap accuracy
+precision: 0.99011154
+recall: 0.81778204
+fscore: 0.89573351
+
+sim 2, annotated junctions, star
+
+junction accuracy
+precision: 0.83725325
+recall: 0.94280674
+fscore: 0.88690046
+
+
+overlap accuracy
+precision: 0.96918687
+recall: 0.76176912
+fscore: 0.85305072
+
