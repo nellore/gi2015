@@ -114,9 +114,7 @@ python create_runs.py --s3-bucket s3://[bucket] --region [AWS region] --c3-2xlar
 sra_batch_X_sample_size_K_prep.sh
 sra_batch_X_sample_size_K_itn.sh
 ```
-, for `X` an integer between `0` and `42` inclusive and some `K`. Each script corresponds to a different job flow to be run on [Amazon Elastic MapReduce](https://aws.amazon.com/elasticmapreduce/). The `prep` script downloads FASTQs from the [EMBL-EBI](https://www.ebi.ac.uk/) server and dumps preprocessed versions of them on S3. The `itn` script aligns the data to find junctions. For each `X`, execute `sh sra_batch_X_sample_size_K_prep.sh`, wait until the job flow is done, and then execute `sh sra_batch_X_sample_size_K_itn.sh`.
-
-The scripts that are overwritten are the scripts we ultimately ran. We fiddled with bid prices in individual scripts because the [spot market](https://aws.amazon.com/ec2/spot/) was unpredictable.
+, for `X` an integer between `0` and `42` inclusive and some `K`. Each script corresponds to a different job flow to be run on [Amazon Elastic MapReduce](https://aws.amazon.com/elasticmapreduce/). The `prep` script downloads FASTQs from the [EMBL-EBI](https://www.ebi.ac.uk/) server and dumps preprocessed versions of them on S3. The `itn` script aligns the data to find junctions. For each `X`, execute `sh sra_batch_X_sample_size_K_prep.sh`, wait until the job flow is done, and then execute `sh sra_batch_X_sample_size_K_itn.sh`. The scripts that are overwritten are the scripts we ultimately ran. We fiddled with bid prices in individual scripts because the [spot market](https://aws.amazon.com/ec2/spot/) was unpredictable.
 6. Download the hg19 Bowtie index [here](ftp://ftp.ccb.jhu.edu/pub/data/bowtie_indexes/hg19.ebwt.zip) and unpack it.
 7. Run
 ```
