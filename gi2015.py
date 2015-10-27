@@ -25,7 +25,8 @@ PREREQUISITES:
 
 File requirements:
 1. all_SRA_introns.tsv.gz: database of introns found across ~21,500 SRA samples
-    NOT PROVIDED IN THIS REPO BUT WILL BE RELEASED WITH A PREPRINT SOON.
+    NOT PROVIDED IN THIS REPO BUT CAN BE REPRODUCED. See README.md for
+    instructions.
 2. index_to_SRA_accession.tsv: maps sample indexes from all_SRA_introns.tsv.gz
     to SRA run accession numbers (regex: [SED]RR\d+) . (In this repo.)
 3. gencode.v19.annotation.gtf.gz
@@ -118,9 +119,10 @@ Note that the argument of --hisat2-dir is the directory containing the HISAT 2
 binary, but the argument of --STAR is precisely the STAR binary.
 
 The following output was obtained. It is included in this repo because this 
-script cannot currently be rerun to obtain results; the input file
-all_SRA_introns.tsv.gz is not yet public. Note that an "overlap" below is
-an instance where a junction is overlapped by a read. A read that overlaps
+script cannot easily be rerun to obtain results; the input file
+all_SRA_introns.tsv.gz must be provided, and this requires following the
+instructions in README.md for its reproduction. Note that an "overlap" below
+is an instance where a junction is overlapped by a read. A read that overlaps
 two exon-exon junctions contributes two overlaps (or overlap instances).
 
 [basename].venn.txt
