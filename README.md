@@ -1,5 +1,6 @@
 # gi2015
-Scripts and processed data for reproducing Genome Informatics 2015 talk on junctions found across ~21,500 SRA samples
+
+This repo contains scripts and processed data for reproducing my Genome Informatics 2015 talk on junctions found across ~21,500 SRA samples.
 
 The presentation itself is in `gi2015.key` and `gi2015.pdf`. The Python script `gi2015.py` generates all the data used in the talk (and much more), but it depends on a list of junctions that's currently unreleased. The junction list may nonetheless be reproduced by following the instructions at the end of this document. Results from running `gi2015.py` are contained in the following files whose formats are described below. See `gi2015.py`'s docstring for still more information.
 
@@ -106,9 +107,9 @@ cd /path/to/gi2015/sra_runs
 ; that is, change to the `sra_runs` subdirectory of your clone.
 4. Run
 ```
-python create_runs.py --s3-bucket s3://\[bucket\] --region \[AWS region\] --c3-2xlarge-bid-price \[lower price\] --c3-8x-large-bid-price \[higher price\]
+python create_runs.py --s3-bucket s3://[bucket] --region [AWS region] --c3-2xlarge-bid-price [lower price] --c3-8x-large-bid-price [higher price]
 ```
-, where \[bucket\] is some S3 bucket you own where results will be dumped, \[AWS region\] is an AWS region (e.g., "us-east-1"), and \[lower price\]/\[higher price\] is an appropriate bid price for a c3.2xlarge/c3.8xlarge instance, respectively.
+, where `[bucket]` is some S3 bucket you own where results will be dumped, `[AWS region]` is an AWS region (e.g., "us-east-1"), and `[lower price]`/`[higher price]` is an appropriate bid price for a c3.2xlarge/c3.8xlarge instance, respectively.
 5. Several scripts will be (over)written; they will be named
 ```
 sra_batch_X_sample_size_K_prep.sh
@@ -120,6 +121,6 @@ The scripts that are overwritten are the scripts we ultimately ran. We fiddled w
 6. Download the hg19 Bowtie index [here](ftp://ftp.ccb.jhu.edu/pub/data/bowtie_indexes/hg19.ebwt.zip) and unpack it.
 7. Run
 ```
-sh retrieve_and_combine_results.sh \[output\] \[bowtie1 idx\] \[bucket\]
+sh retrieve_and_combine_results.sh [output] [bowtie1 idx] [bucket]
 ```
-, where \[output\] is some output directory on your local filesystem (20 GB required), \[bowtie1 idx\] is the basename of the Bowtie index you just downloaded, and \[bucket\] is the S3 bucket you specified in step 4. The file `all_SRA_introns.tsv.gz`, which is used by `gi2015.py`, will be written to \[output\].
+, where `[output]` is some output directory on your local filesystem (20 GB required), `[bowtie1 idx]` is the basename of the Bowtie index you just downloaded, and `[bucket]` is the S3 bucket you specified in step 4. The file `all_SRA_introns.tsv.gz`, which is used by `gi2015.py`, will be written to `[output]`.
