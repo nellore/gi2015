@@ -35,8 +35,7 @@ the union of the three gene annotations considered here
 8. 1 if sample is annotated as male on SRA; 0 if sample is annotated as female
 9. field 2 / field 4
 
-### gi2015.[type].tsv, where [type] is in {bottom_10_pct, top_10_pct,
-                                    all_words}
+### gi2015.[type].tsv, where [type] is in {bottom_10_pct, top_10_pct, all_words}
 Gives common words among samples in bottom and top 10 percent in terms of
 proportion of junctions that are annotated -- as well as for all samples.
 Only samples with >= 10k junctions are considered.
