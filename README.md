@@ -97,27 +97,23 @@ Mathematica 10 was used to make all plots. See the notebook `gi2015.nb`.
 1. An account with Amazon Web Services is required to recover our results. Get one [here](http://aws.amazon.com/).
 2. [Download](https://github.com/nellore/rail/raw/master/releases/install_rail-rna-0.1.7a) Rail-RNA v0.1.7a and follow the instructions at http://docs.rail.bio/installation/ to install it. Make sure to install and set up the Amazon Web Services (AWS) CLI as described there.
 3. Familiarize yourself with how Rail-RNA works by reviewing the [tutorial](http://docs.rail.bio/tutorial/).
-3. Download and install [PyPy 2.4](http://doc.pypy.org/en/latest/release-2.4.0.html).
-4. Clone this repo, `gi2015`.
-3. At the command line, enter
-```
-cd /path/to/gi2015/sra_runs
-```
+4. Download and install [PyPy 2.4](http://doc.pypy.org/en/latest/release-2.4.0.html).
+5. Clone this repo, `gi2015`.
+6. At the command line, enter
+
+        cd /path/to/gi2015/sra_runs
 ; that is, change to the `sra_runs` subdirectory of your clone.
-4. Run
-```
-python create_runs.py --s3-bucket s3://[bucket] --region [AWS region] --c3-2xlarge-bid-price [lower price] --c3-8x-large-bid-price [higher price]
-```
-, where `[bucket]` is some S3 bucket you own where results will be dumped, `[AWS region]` is an AWS region (e.g., "us-east-1"), and `[lower price]`/`[higher price]` is an appropriate bid price for a c3.2xlarge/c3.8xlarge instance, respectively.
-5. Several scripts will be (over)written; they will be named
-```
-sra_batch_X_sample_size_K_prep.sh
-sra_batch_X_sample_size_K_itn.sh
-```
-, for `X` an integer between `0` and `42` inclusive and some `K`. Each script corresponds to a different job flow to be run on [Amazon Elastic MapReduce](https://aws.amazon.com/elasticmapreduce/). The `prep` script downloads FASTQs from the [EMBL-EBI](https://www.ebi.ac.uk/) server and dumps preprocessed versions of them on S3. The `itn` script aligns the data to find junctions. For each `X`, execute `sh sra_batch_X_sample_size_K_prep.sh`, wait until the job flow is done, and then execute `sh sra_batch_X_sample_size_K_itn.sh`. The scripts that are overwritten are the scripts we ultimately ran. We fiddled with bid prices in individual scripts because the [spot market](https://aws.amazon.com/ec2/spot/) was unpredictable.
-6. Download the hg19 Bowtie index [here](ftp://ftp.ccb.jhu.edu/pub/data/bowtie_indexes/hg19.ebwt.zip) and unpack it.
 7. Run
-```
-sh retrieve_and_combine_results.sh [output] [bowtie1 idx] [bucket]
-```
+
+        python create_runs.py --s3-bucket s3://[bucket] --region [AWS region] --c3-2xlarge-bid-price [lower price] --c3-8x-large-bid-price [higher price]
+, where `[bucket]` is some S3 bucket you own where results will be dumped, `[AWS region]` is an AWS region (e.g., "us-east-1"), and `[lower price]`/`[higher price]` is an appropriate bid price for a c3.2xlarge/c3.8xlarge instance, respectively.
+8. Several scripts will be (over)written; they will be named
+
+        sra_batch_X_sample_size_K_prep.sh
+        sra_batch_X_sample_size_K_itn.sh
+, for `X` an integer between `0` and `42` inclusive and some `K`. Each script corresponds to a different job flow to be run on [Amazon Elastic MapReduce](https://aws.amazon.com/elasticmapreduce/). The `prep` script downloads FASTQs from the [EMBL-EBI](https://www.ebi.ac.uk/) server and dumps preprocessed versions of them on S3. The `itn` script aligns the data to find junctions. For each `X`, execute `sh sra_batch_X_sample_size_K_prep.sh`, wait until the job flow is done, and then execute `sh sra_batch_X_sample_size_K_itn.sh`. The scripts that are overwritten are the scripts we ultimately ran. We fiddled with bid prices in individual scripts because the [spot market](https://aws.amazon.com/ec2/spot/) was unpredictable.
+9. Download the hg19 Bowtie index [here](ftp://ftp.ccb.jhu.edu/pub/data/bowtie_indexes/hg19.ebwt.zip) and unpack it.
+10. Run
+
+        sh retrieve_and_combine_results.sh [output] [bowtie1 idx] [bucket]
 , where `[output]` is some output directory on your local filesystem (20 GB required), `[bowtie1 idx]` is the basename of the Bowtie index you just downloaded, and `[bucket]` is the S3 bucket you specified in step 4. The file `all_SRA_introns.tsv.gz`, which is used by `gi2015.py`, will be written to `[output]`.
