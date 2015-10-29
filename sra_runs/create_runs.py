@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-create_batches.py
+create_runs.py
 
 Creates scripts for running on human Illumina RNA-seq from SRA in batches on
 EMR. Use Rail-RNA v0.1.7a to reproduce results.
