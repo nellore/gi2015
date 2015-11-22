@@ -29,6 +29,7 @@ if __name__ == '__main__':
                  'type is used for preprocessing data'
         )
     parser.add_argument('--c3-8xlarge-bid-price', type=float, required=False,
+            default=0.33,
             help='bid price for each c3.8xlarge instance; this instance '
                  'type is used for aligning data'
         )
